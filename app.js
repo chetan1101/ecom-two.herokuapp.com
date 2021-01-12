@@ -18,11 +18,13 @@ app.use((err, req, res, next)=>{
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes)
 
-app.use(express.static('client/build'))
-const path = require('path');
-app.get('*',(req,res)=>{
-    res.sendFile(path.resolve(__dirname,'client','build','index.html'))
-})
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('client/build'))
+    const path = require('path');
+    app.get('*',(req,res)=>{
+        res.sendFile(path.resolve(__dirname,'client','build','index.html'))
+    })
+  }
 
 
 
