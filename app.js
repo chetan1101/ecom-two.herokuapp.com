@@ -1,11 +1,16 @@
 const express = require("express");
-const data = require("./data");
+const mongoose = require("mongoose")
 const app = express();
 const PORT  = process.env.PORT || 5000
 const cors = require('cors');
 const bodyParser = require("body-parser");
 require("dotenv/config");
 
+mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex:true
+}).catch(err => console.log(err.reason));
 
 const userRoutes = require("./Routes/userRoute");
 const productRoutes = require("./Routes/productRoute");
@@ -16,7 +21,7 @@ app.use((err, req, res, next)=>{
     res.status(500).send({massage: err.massage});
 });
 app.use("/api/users", userRoutes);
-app.use("/api/products", productRoutes)
+app.use("/api/products", productRoutes);
 
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('client/build'))
@@ -26,6 +31,4 @@ if(process.env.NODE_ENV === 'production'){
     })
   }
 
-
-require('./db');
 app.listen(PORT, ()=>console.log(`server is running on port ${PORT}`));
