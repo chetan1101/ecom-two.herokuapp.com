@@ -1,6 +1,7 @@
 const express = require("express");
 const data = require("./data");
 const app = express();
+const port = process.env.PORT
 const cors = require('cors');
 const bodyParser = require("body-parser");
 require("dotenv/config");
@@ -25,4 +26,4 @@ app.get('*',(req,res)=>{
 
 
 
-app.listen(4000, ()=>console.log("server is running on port 4000"));
+app.listen(port, ()=>console.log(`server is running on port ${port}`));
