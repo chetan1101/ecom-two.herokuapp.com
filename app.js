@@ -5,7 +5,7 @@ const PORT  = process.env.PORT || 5000
 const cors = require('cors');
 const bodyParser = require("body-parser");
 require("dotenv/config");
-require('./db');
+
 
 const userRoutes = require("./Routes/userRoute");
 const productRoutes = require("./Routes/productRoute");
@@ -27,5 +27,5 @@ if(process.env.NODE_ENV === 'production'){
   }
 
 
-
+require('./db');
 app.listen(PORT, ()=>console.log(`server is running on port ${PORT}`));
