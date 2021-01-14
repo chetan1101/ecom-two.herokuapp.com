@@ -13,8 +13,16 @@ mongoose.connect(process.env.MONGODB_URI, {
     useCreateIndex:true
 }).catch(err => console.log(err.reason));
 
+
+// mongoose.connect(process.env.MONGODB_URI_LOCAL, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useCreateIndex:true
+// }).catch(err => console.log(err.reason));
+
 const userRoutes = require("./Routes/userRoute");
 const productRoutes = require("./Routes/productRoute");
+const orderRoutes = require("./Routes/orderRoute");
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -23,6 +31,7 @@ app.use((err, req, res, next)=>{
 });
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
+app.use("/api/orders", orderRoutes);
 
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('client/build'))

@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { OrderList } from 'primereact/orderlist';
 import { Button } from 'primereact/button';
-import { connect, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import CheckoutSteps from '../Components/CheckoutSteps';
+import { createNewOrder } from '../Store/Actions/orderAction';
+import { useHistory } from 'react-router-dom';
+import { ORDER_RESET } from '../Store/Constants/orderConstants';
 
 function ReviewOrderPage(props) {
     const cart = useSelector(state=>state.cart);
     const { cartItems, shippingAddress, paymentMethod  } = cart;
-    console.log(props.data)
+
+    const createOrder = useSelector(state=>state.createOrder);
+    const {loading, error, success, order} = createOrder;
+    const dispatch = useDispatch();
+    const history = useHistory();
   
     // calculation
     const toPrice = (num) => Number(num.toFixed(2));  // 5.123 => "5.12" => 5.12
@@ -22,6 +29,16 @@ function ReviewOrderPage(props) {
 
     cart.totalPrice = cart.itemPrice + cart.shippingPrice + cart.taxPrice;
 
+    const placeOrderHandler = () => {
+        dispatch(createNewOrder({...cart, orderItems: cart.cartItems}))
+    }
+
+    useEffect(()=>{
+        if(success){
+            history.push(`/order-detail/${order._id}`);
+            dispatch({type:ORDER_RESET})
+        }
+    },[dispatch, history, order, success])
 
     const itemTemplate = (item) => {
         return (
@@ -88,30 +105,31 @@ function ReviewOrderPage(props) {
                             <div className="p-d-flex p-jc-between p-mb-2">
                                 <div>Items:</div>
 
-                                <div>&#8377; {cart.itemPrice}</div>
+                                <div>&#8377; {cart.itemPrice.toFixed(2)}</div>
                             </div>
                             <div className="p-d-flex p-jc-between p-mb-2">
                                 <div>Shipping:</div>
 
-                                <div>&#8377; {cart.shippingPrice}</div>
+                                <div>&#8377; {cart.shippingPrice.toFixed(2)}</div>
                             </div>
                             <div className="p-d-flex p-jc-between p-mb-2">
                                 <div>Tax:</div>
 
-                                <div>&#8377; {cart.taxPrice}</div>
+                                <div>&#8377; {cart.taxPrice.toFixed(2)}</div>
                             </div>
                             <div style={{fontSize:"18px"}} className="p-d-flex p-jc-between p-my-2">
                                 <div><strong>Order total:</strong></div>
 
-                                <div><strong>&#8377; {cart.totalPrice}</strong></div>
+                                <div><strong>&#8377; {cart.totalPrice.toFixed(2)}</strong></div>
                             </div>
-                            <Button onClick={() => props.history.push("/signin?redirect=shipping")} label="Procced To Checkout" className="block p-mt-3" />
+                            <Button onClick={placeOrderHandler} label="Place order" className="block p-mt-3" />
+                            {loading && <p>Loading...</p>}
+                            {error && <p>{error}</p>}
                         </div>
                     </div>
                 </div>
             </div>
         </>
-
     )
 }
 
