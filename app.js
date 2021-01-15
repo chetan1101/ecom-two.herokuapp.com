@@ -32,6 +32,9 @@ app.use((err, req, res, next)=>{
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/orders", orderRoutes);
+app.get("/api/config/paypal", (req, res)=>{
+    res.send(process.env.PayPal_Client_ID)
+})
 
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('client/build'))

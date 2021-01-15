@@ -1,25 +1,49 @@
 
 
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { OrderList } from 'primereact/orderlist';
 import { Button } from 'primereact/button';
-import CheckoutSteps from '../Components/CheckoutSteps';
+import { PayPalButton } from "react-paypal-button-v2";
 import { getOrderDetail } from '../Store/Actions/orderAction';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 function OrderDetailPage(props) {
     const orderId = props.match.params.id;
     const { loading, error, order } = props.orderData;
+    const [sdkReady, setSdkReady] = useState(false);
     console.log(order)
 
 
 
     useEffect(() => {
-        props.getOrderDetail(orderId)
+        const addPaypalScript = async () => {
+            const { data } = await axios.get('/api/config/paypal');
+            const script = document.createElement("script");
+            script.src = `https://www.paypal.com/sdk.js?client-id=${data}`;
+            script.async = true;
+            script.onload = () => {
+                setSdkReady(true);
+            }
+            document.body.appendChild(script);
+        }
+        if (!order._id) {
+            props.getOrderDetail(orderId)
+        }else{
+            if(!order.isPaid){
+                if(!window.paypal){
+                    addPaypalScript()
+                }else{
+                    setSdkReady(true)
+                }
+            }
+        }
+
+
     }, [orderId])
 
-    const paymentOrderHandler = () => {
+    const successPaymentHendler = () => {
         //
     }
 
@@ -116,7 +140,16 @@ function OrderDetailPage(props) {
 
                                 <div><strong>&#8377; {order.totalPrice}</strong></div>
                             </div>
-                            <Button onClick={paymentOrderHandler} label="Place order" className="block p-mt-3" />
+                            
+                            { !order.isPaid && 
+                                <>
+                                {!setSdkReady ? <div>Loading...</div> : 
+                                
+                                <PayPalButton amount={order.totalPrice} onSuccess={successPaymentHendler}></PayPalButton>
+                                
+                                }
+                                </>
+                            }
 
                         </div>
                     </div>
