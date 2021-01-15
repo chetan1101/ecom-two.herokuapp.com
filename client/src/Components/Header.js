@@ -27,8 +27,8 @@ function Header() {
     ];
     return (
         <header>
-            <div className="header p-d-flex p-jc-between p-ai-center">
-                <div>
+            <div className="headerContaier">
+                <div className="headerLogo">
                     <i className="pi pi-bars"></i>
                     <Link to="/"><span className="logo">ecom</span></Link>
                 </div>
@@ -37,6 +37,8 @@ function Header() {
                     <Link to="/">Women</Link>
                     <Link to="/">Kids</Link>
                 </div>
+
+
                 <div className="headerButtons">
                     <Button icon="pi pi-search" />
 
@@ -50,7 +52,7 @@ function Header() {
 
                             badgeClassName="p-badge-danger" />
 
-                        <SplitButton label={user.userInfo.name} icon="pi pi-user" model={userItems}></SplitButton>
+                        <SplitButton className="userBtn" label={user.userInfo.name} icon="pi pi-user" model={userItems}></SplitButton>
                     </>
                         :
 

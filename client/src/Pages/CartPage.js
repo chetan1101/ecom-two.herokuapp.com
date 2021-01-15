@@ -81,14 +81,14 @@ function CartPage(props) {
         <div className="container cart_container">
             <PagePathStrip />
             <div className="p-grid">
-                <div className="p-sm-9">
+                <div className="p-col-12 p-sm-8">
                     <div className="orderlist-cart">
                         <div className="p-shadow-2">
                             <OrderList value={cartItems} itemTemplate={itemTemplate}></OrderList>
                         </div>
                     </div>
                 </div>
-                <div className="p-sm-3">
+                <div className="p-col-12 p-sm-4">
                     <div className="p-shadow-2 cart_totals p-p-3">
                         <div className="p-d-flex p-jc-between">
                             <div>Subtotal: (

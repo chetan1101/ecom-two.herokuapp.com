@@ -26,7 +26,7 @@ function ProductViewPage(props) {
                 <PagePathStrip />
                 <div className="product_detail_cont">
                     <div className="p-grid">
-                        <div className="p-lg-3 p-md-6 p-sm-12">
+                        <div className="p-lg-3 p-md-4 p-sm-12 p-col-12 p-col-12">
                             <div className="p-shadow-2 img_main_cont">
                                 <div>
                                     <img className="product_img" src={product.image} alt={product.name} />
@@ -44,7 +44,7 @@ function ProductViewPage(props) {
                                 </div>
                             </div>
                         </div>
-                        <div className="p-lg-6 p-md-6 p-sm-12">
+                        <div className="p-lg-6 p-md-8 p-sm-12 p-col-12 p-col-12">
                             <div className="p-shadow-2 product_detail">
                                 <h1>{product.name}</h1>
                                 <Link className="storelink" to="">Store name</Link>
@@ -95,7 +95,7 @@ function ProductViewPage(props) {
 
                             </div>
                         </div>
-                        <div className="p-lg-3 p-md-12 p-sm-12">
+                        <div className="p-lg-3 p-md-12 p-sm-12 p-col-12">
                             <div className="p-shadow-2 seller_info_box">
                                 <h5>Seller Information</h5>
                                 <p>Store: abc store</p>

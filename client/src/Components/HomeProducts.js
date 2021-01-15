@@ -16,7 +16,7 @@ function HomeProducts(props) {
             <div className="p-grid">
                 {products.map((item)=>
                 
-                <div className="p-col-12 p-md-6 p-lg-3">
+                <div className="p-col-12 p-md-6 p-lg-4 ">
                     <ProductCard item={item}/>
                 </div>
                 

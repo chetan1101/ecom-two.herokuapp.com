@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,700;1,100;1,400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 body {
     margin: 0;
     padding: 0;
@@ -16,6 +16,19 @@ p {
     margin-block-start: 0em;
     margin-block-end: 0em;
 }
+img {
+    max-width: 100%;
+    width: 100%;
+}
+.loading_overlay_p{
+    position: relative;
+}
+.loading_overlay{
+    position: absolute;
+    background-color: #ccc;
+    top: 100%;
+    left: 100%;
+}
 
 .p-component {
     font-family: "Montserrat", sans-serif;
@@ -30,11 +43,35 @@ main{
 .p-shadow-2 {
     background-color: #fff;
 }
+.p-card .p-card-title a{
+    text-decoration: none;
+    color: #555;
+    font-size: 16px;
+    font-weight: 600;
+}
+.p-button-label{
+    font-weight: 500;
+}
 
-.header {
+
+header {
+    .headerContaier{
+        display: flex;
+        flex-direction: row wrap;
+        align-items: center;
+        justify-content: space-between;
+    
+    }
     background-color: #883cae;
     color: #fff;
     padding: 0 20px;
+    .headerContaier{
+        display: flex;
+        flex-direction: row wrap;
+        align-items: center;
+        justify-content: space-between;
+
+    }
     .p-button.p-button-icon-only {
         width: auto;
         padding: 0.5rem;
@@ -334,7 +371,7 @@ main{
     .p-steps .p-steps-item .p-menuitem-link .p-steps-number {
         padding: 8px;
         font-size: 14px;
-        font-weight: bold;
+        font-weight:400;
         background: #fff;
     }
     .p-steps .p-steps-item.p-highlight .p-steps-number {
@@ -351,6 +388,21 @@ main{
             font-size: 14px;
             padding: 1px 0;
         }
+    }
+}
+
+@media screen and (max-width: 670px){
+    header .headerLinks{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 460px){
+    header .userBtn{
+        display: none;
+    }
+    .checkoutSteps .p-steps .p-steps-item .p-menuitem-link .p-steps-number{
+        font-size: 12px;
     }
 }
 

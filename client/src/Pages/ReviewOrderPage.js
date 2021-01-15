@@ -74,9 +74,9 @@ function ReviewOrderPage(props) {
             <div className="container review_order_container p-mt-6">
 
                 <div className="p-grid">
-                    <div className="p-sm-9">
+                    <div className="p-sm-8 p-col-12">
                         <div className="p-grid">
-                            <div className="p-sm-12 p-mb-1">
+                            <div className="p-sm-12 p-col-12 p-mb-1">
                                 <div className="p-shadow-2 p-p-3 address_style">
                                     <h4 className="p-mb-3">Shipping address</h4>
                                     <p>{shippingAddress.fullname}</p>
@@ -85,7 +85,7 @@ function ReviewOrderPage(props) {
                                     <p>{shippingAddress.country}</p>
                                 </div>
                             </div>
-                            <div className="p-sm-12 p-mb-2">
+                            <div className="p-sm-12 p-col-12 p-mb-2">
                                 <div className="p-shadow-2 p-p-3 address_style">
                                     <h4 className="p-mb-3">Payment method</h4>
                                     <p><span class="product-badge status-outstock">{paymentMethod}</span></p>
@@ -99,7 +99,7 @@ function ReviewOrderPage(props) {
                             </div>
                         </div>
                     </div>
-                    <div className="p-sm-3">
+                    <div className="p-sm-4 p-col-12">
                         <div className="p-shadow-2 cart_totals p-p-3">
                         <h4 className="p-mb-3">Order summary</h4>
                             <div className="p-d-flex p-jc-between p-mb-2">
