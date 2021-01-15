@@ -7,18 +7,18 @@ const cors = require('cors');
 const bodyParser = require("body-parser");
 
 
-// mongoose.connect(process.env.MONGODB_URI, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     useCreateIndex:true
-// }).catch(err => console.log(err.reason));
-
-
-mongoose.connect(process.env.MONGODB_URI_LOCAL, {
+mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex:true
 }).catch(err => console.log(err.reason));
+
+
+// mongoose.connect(process.env.MONGODB_URI_LOCAL, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useCreateIndex:true
+// }).catch(err => console.log(err.reason));
 
 const userRoutes = require("./Routes/userRoute");
 const productRoutes = require("./Routes/productRoute");
