@@ -21,3 +21,21 @@ export const createNewOrder = (order) => async (dispatch, getState) => {
         })
     }
 }
+
+export const getOrderDetail = (orderId) => async (dispatch, getState) => {
+    dispatch({type:actionTypes.ORDER_DETAIL_REQUEST, payload: orderId});
+    try {
+        const { signIn: { userInfo } } = getState();
+        const { data } = await axios.get(`/api/orders/${orderId}`, {
+            headers:{
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        });
+        dispatch({type:actionTypes.ORDER_DETAIL_SUCCESS, payload: data});
+    } catch (error) {
+        dispatch({
+            type: actionTypes.ORDER_DETAIL_FAIL, payload:
+                error.response && error.response.data.massage ? error.response.data.massage : error.massage
+        })
+    }
+}

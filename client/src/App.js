@@ -14,6 +14,7 @@ import RegiserPage from './Pages/RegiserPage';
 import ShippingPage from './Pages/ShippingPage';
 import PaymentPage from './Pages/PaymentPage';
 import ReviewOrderPage from './Pages/ReviewOrderPage';
+import OrderDetailPage from './Pages/OrderDetailPage';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path='/shipping' component={ShippingPage} />
           <Route path='/payment' component={PaymentPage} />
           <Route path='/review-order' component={ReviewOrderPage} />
+          <Route path='/order-detail/:id' component={OrderDetailPage} />
         </Switch>
         </main>
         <Footer/>

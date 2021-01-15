@@ -23,6 +23,16 @@ router.post('/', isAuth, asyncHandler(async (req, res) => {
         const createdOrder = await order.save();
         res.status(201).send({ massage: "Order is placed", order: createdOrder })
     }
+}));
+
+router.get('/:id', isAuth, asyncHandler(async(req,res)=>{
+    const order = await Order.findById(req.params.id);
+    if(order){
+        res.send(order);
+    }else{
+        res.status(404).send({massage:'Order not found.'})
+    }
 }))
+
 
 module.exports = router;

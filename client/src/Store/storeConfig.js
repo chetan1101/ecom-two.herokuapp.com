@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import { cartReducer } from "./Reducers/cartReducer";
-import { createOrderReducer } from "./Reducers/orderReducer";
+import { createOrderReducer, orderDetailsReducer } from "./Reducers/orderReducer";
 import { productDetailReducer, productListReducer } from "./Reducers/productReducer";
 import { signInReducer } from "./Reducers/userReducer";
 
@@ -25,7 +25,8 @@ const rootReducer = combineReducers({
     productDetail: productDetailReducer,
     cart: cartReducer,
     signIn: signInReducer,
-    createOrder: createOrderReducer
+    createOrder: createOrderReducer,
+    orderDetails: orderDetailsReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
