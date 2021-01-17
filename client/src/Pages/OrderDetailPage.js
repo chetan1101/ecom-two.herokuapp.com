@@ -21,7 +21,7 @@ function OrderDetailPage(props) {
         const addPaypalScript = async () => {
             const { data } = await axios.get('/api/config/paypal');
             const script = document.createElement("script");
-            script.src = `https://www.paypal.com/sdk.js?client-id=${data}`;
+            script.src = `https://www.paypal.com/sdk/js?client-id=${data}`;
             script.async = true;
             script.onload = () => {
                 setSdkReady(true);
@@ -135,7 +135,7 @@ function OrderDetailPage(props) {
 
                                 <div>&#8377; {order.taxPrice}</div>
                             </div>
-                            <div style={{ fontSize: "18px" }} className="p-d-flex p-jc-between p-my-2">
+                            <div style={{ fontSize: "18px", paddingBottom:"20px" }} className="p-d-flex p-jc-between p-my-2">
                                 <div><strong>Order total:</strong></div>
 
                                 <div><strong>&#8377; {order.totalPrice}</strong></div>
@@ -143,7 +143,7 @@ function OrderDetailPage(props) {
                             
                             { !order.isPaid && 
                                 <>
-                                {!setSdkReady ? <div>Loading...</div> : 
+                                {!sdkReady ? <div>Loading...</div> : 
                                 
                                 <PayPalButton amount={order.totalPrice} onSuccess={successPaymentHendler}></PayPalButton>
                                 
