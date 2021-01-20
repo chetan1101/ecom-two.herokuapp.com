@@ -71,7 +71,7 @@ function ReviewOrderPage(props) {
 
     return (
         <>
-        <Seo title={`Ecom-Review Order - ${order._id}`} description={`Ecom-Review Order - ${order._id}`}/>
+        <Seo title={`--Review order--Ecom`} description={`--Review order--Ecom`}/>
             <CheckoutSteps step1 step2 step3 step4 />
             <div className="container review_order_container p-mt-6">
 
