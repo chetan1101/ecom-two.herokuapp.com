@@ -6,6 +6,7 @@ import CheckoutSteps from '../Components/CheckoutSteps';
 import { createNewOrder } from '../Store/Actions/orderAction';
 import { useHistory } from 'react-router-dom';
 import { ORDER_RESET } from '../Store/Constants/orderConstants';
+import Seo from '../Components/Seo';
 
 function ReviewOrderPage(props) {
     const cart = useSelector(state=>state.cart);
@@ -70,6 +71,7 @@ function ReviewOrderPage(props) {
 
     return (
         <>
+        <Seo title={`Ecom-Review Order - ${order._id}`} description={`Ecom-Review Order - ${order._id}`}/>
             <CheckoutSteps step1 step2 step3 step4 />
             <div className="container review_order_container p-mt-6">
 

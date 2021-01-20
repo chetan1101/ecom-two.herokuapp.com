@@ -3,11 +3,11 @@
 
 import React, { useEffect, useState } from 'react';
 import { OrderList } from 'primereact/orderlist';
-import { Button } from 'primereact/button';
 import { PayPalButton } from "react-paypal-button-v2";
 import { getOrderDetail } from '../Store/Actions/orderAction';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import Seo from '../Components/Seo';
 
 function OrderDetailPage(props) {
     const orderId = props.match.params.id;
@@ -77,7 +77,7 @@ function OrderDetailPage(props) {
 
     return (loading ? <div>Loading...</div> : error ? <div>{error}</div> :
         <>
-
+            <Seo title={`Ecom-Order Details - ${order._id}`} description={`Ecom-Order Details - ${order._id}`}/>
             <div className="container review_order_container p-mt-6">
                 <h4 className="p-mb-4">Order number: {orderId}</h4>
 

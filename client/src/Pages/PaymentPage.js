@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { savepaymentMethod } from '../Store/Actions/cartAction';
 import { SelectButton } from 'primereact/selectbutton';
+import Seo from '../Components/Seo';
 
 function PaymentPage(props) {
     const { userInfo } = props.signinData;
@@ -29,11 +30,11 @@ function PaymentPage(props) {
 
     return (
         <>
+            <Seo title={`--Add payment details--Ecom`} description={`--Add payment details--Ecom`}/>
             <CheckoutSteps step1 step2 step3 />
             <div className="container" style={{ marginTop: "40px" }}>
                 <div className="container p-shadow-2 p-p-6">
-                    <h1 className="p-mb-3">Shipping</h1>
-
+                    <h1 className="p-mb-3">Payment</h1>
                     <form onSubmit={(e) => handlePaymetSubmit(e)} className="p-mt-5">
 
                         <div className="p-field p-my-5">

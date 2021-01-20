@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Seo from '../Components/Seo';
 import { getSignIn, getRegister } from '../Store/Actions/userAction';
 
 function RegisterPage(props) {
@@ -25,6 +26,7 @@ function RegisterPage(props) {
 
     return (
         <div className="container p-shadow-2 p-p-6">
+            <Seo title={`--Get Register--Ecom`} description={`--Get Register--Ecom`}/>
             <h1 className="p-mb-3">Register</h1>
             {error && <p>{error}</p>}
             <form onSubmit={handleSubmit(onSubmit)}>

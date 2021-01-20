@@ -6,6 +6,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getProductDetail } from '../Store/Actions/productAction';
 import PagePathStrip from '../Components/PagePathStrip';
+import Seo from '../Components/Seo';
 
 function ProductViewPage(props) {
     const history = useHistory();
@@ -22,6 +23,7 @@ function ProductViewPage(props) {
 
     return (loading ? <div>Loading...</div> : error ? <div>{error}</div> :
         <div className="container">
+             <Seo title={`Ecom-${product.name}`} description={`${product.description}`} />
             <div className="ProductViewPage">
                 <PagePathStrip />
                 <div className="product_detail_cont">

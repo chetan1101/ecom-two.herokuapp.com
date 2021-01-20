@@ -5,6 +5,7 @@ import { Button } from 'primereact/button';
 import { connect } from 'react-redux';
 import { addToCart,removeFromCart } from '../Store/Actions/cartAction';
 import { Link } from 'react-router-dom';
+import Seo from '../Components/Seo';
 
 function CartPage(props) {
     const productId = props.match.params.id;
@@ -67,6 +68,7 @@ function CartPage(props) {
     return (cartItems.length === 0 ?
 
         <div className="container">
+            <Seo title={"Ecom-Cart is empty"} description={"Ecom-Cart is empty"} />
             <div className="p-shadow-2 cart_emp_container">
                 <img src="/images/emp_cart.png" alt="cart is empty" />
                 <h1>Cart is empty.</h1>
@@ -79,6 +81,7 @@ function CartPage(props) {
         </div>
         :
         <div className="container cart_container">
+             <Seo title={`Ecom-Cart ${cartItems.length} Items`} description={`Ecom-Cart ${cartItems.length} Items`} />
             <PagePathStrip />
             <div className="p-grid">
                 <div className="p-col-12 p-sm-8">

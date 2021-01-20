@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Seo from '../Components/Seo';
 import { getSignIn } from '../Store/Actions/userAction';
 
 function SignInPage(props) {
@@ -21,6 +22,7 @@ function SignInPage(props) {
 
     return (
         <div className="container p-shadow-2 p-p-6">
+            <Seo title={`--Get signin--Ecom`} description={`--Get signin--Ecom`}/>
             <h1 className="p-mb-3">Sign In</h1>
             {error && <p>{error}</p>}
             <form onSubmit={handleSubmit(onSubmit)}>

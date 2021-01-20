@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { saveShippingAddress } from '../Store/Actions/cartAction';
+import Seo from '../Components/Seo';
 
 function ShippingPage(props) {
 
@@ -28,6 +29,7 @@ function ShippingPage(props) {
 
     return (
         <>
+        <Seo title={`--Add shipping details--Ecom`} description={`--Add shipping details--Ecom`}/>
             <CheckoutSteps step1 step2 />
             <div className="container" style={{ marginTop: "40px" }}>
                 <div className="container p-shadow-2 p-p-6">
