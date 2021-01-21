@@ -82,6 +82,7 @@ function OrderDetailPage(props) {
                 <h4 className="p-mb-4">Order number: {orderId}</h4>
 
                 <div className="p-grid">
+                    
                     <div className="p-sm-8 p-col-12">
                         <div className="p-grid">
                             <div className="p-sm-12 p-col-12 p-mb-1">
