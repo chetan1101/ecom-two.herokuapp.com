@@ -1,4 +1,4 @@
-## Features https://ecom-one.herokuapp.com/
+## Features https://ecom-two.herokuapp.com/
 
 1. Manage cart Items on cart page.
 2. On product page conditional randing.
